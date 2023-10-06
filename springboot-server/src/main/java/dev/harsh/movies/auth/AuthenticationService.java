@@ -20,6 +20,11 @@ public class AuthenticationService {
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
     public AuthenticationResponse register(RegisterRequest request) {
+        User existingUser = userRepository.findByEmail(request.getEmail())
+            .orElse(null);
+        if (existingUser != null) {
+            throw new RuntimeException("User already exists");
+        }
         User user = userRepository.insert(new User(
             request.getName(),
             request.getEmail(),
@@ -28,6 +33,8 @@ public class AuthenticationService {
         ));
         var jwtToken =jwtService.generateToken(user);
         return AuthenticationResponse.builder()
+            .success(true)
+            .message("User registered successfully")
             .token(jwtToken)
             .build();
     }
@@ -42,6 +49,8 @@ public class AuthenticationService {
             .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
+            .success(true)
+            .message("User authenticated successfully")
             .token(jwtToken)
             .build();
     }

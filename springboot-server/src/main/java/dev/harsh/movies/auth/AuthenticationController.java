@@ -18,14 +18,31 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
         @RequestBody RegisterRequest request
     ) {
-        //
-        return ResponseEntity.ok(authenticationService.register(request));
+        try {
+            return ResponseEntity.ok(authenticationService.register(request));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(
+                AuthenticationResponse.builder()
+                    .success(false)
+                    .message(e.getMessage())
+                    .build()
+            );
+        }
     }
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> login(
         @RequestBody AuthenticationRequest request
     ) {
-        return ResponseEntity.ok(authenticationService.authenticate(request));
+        try {
+            return ResponseEntity.ok(authenticationService.authenticate(request));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(
+                AuthenticationResponse.builder()
+                    .success(false)
+                    .message(e.getMessage())
+                    .build()
+            );
+        }
     }
 }
