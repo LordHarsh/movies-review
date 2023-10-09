@@ -26,7 +26,7 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private Role role;
-    private List<ObjectId> watchlist;
+    private List<String> watchlist;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
@@ -60,6 +60,6 @@ public class User implements UserDetails {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.watchlist = new ArrayList<ObjectId>();
+        this.watchlist = new ArrayList<String>();
     }
 }
