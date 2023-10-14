@@ -1,0 +1,28 @@
+
+.play-trailer-div:hover .play-trailer-icon {
+    color:#ffc400;
+    transform: scaleX(1.2) scaleY(1.2);
+    
+}
+
+.play-trailer-icon {
+    padding:0px;
+    margin:0px;
+    color:gold;
+    font-size: 3rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+
+.review-btn:hover {
+    transform: scaleX(1.2) scaleY(1.2);
+    background-color:#ffc400;
+}
+
+
+.delete-button:hover  {
+    transform: scaleX(1.2) scaleY(1.2);
+}
+

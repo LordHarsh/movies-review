@@ -1,6 +1,5 @@
 package dev.harsh.movies.user;
 
-
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,32 +28,35 @@ public class UserController {
             return ResponseEntity.ok(userService.getWatchlist());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(GetWatchlistResponse.builder()
-                .success(false)
-                .message(e.getMessage())
-                .build());
+                    .success(false)
+                    .message(e.getMessage())
+                    .build());
         }
     }
 
     @PostMapping("/watchlist")
     public ResponseEntity<AddWatchlistResponse> addToWatchlist(@RequestBody Map<String, String> request) {
+        System.out.println("POST Request received");
         try {
             return ResponseEntity.ok(userService.addToWatchlist(request.get("imdbId")));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(AddWatchlistResponse.builder()
-                .success(false)
-                .message(e.getMessage())
-                .build());
+                    .success(false)
+                    .message(e.getMessage())
+                    .build());
         }
     }
+
     @DeleteMapping("/watchlist")
     public ResponseEntity<DeleteWatchlistResponse> removeFromWatchlist(@RequestBody Map<String, String> request) {
+        System.out.println("Request received");
         try {
             return ResponseEntity.ok(userService.removeFromWatchlist(request.get("imdbId")));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(DeleteWatchlistResponse.builder()
-                .success(false)
-                .message(e.getMessage())
-                .build());
+                    .success(false)
+                    .message(e.getMessage())
+                    .build());
         }
     }
 }
