@@ -40,8 +40,9 @@ export const Header = ({setSuccessMessage}) => {
                     style={{maxHeight: '100px'}}
                     navbarScroll
                 >
-                    <NavLink className='nav-link'  to='/' >Home</NavLink>
+                    <NavLink className='nav-link' to='/' >Home</NavLink>
                     <NavLink className='nav-link' to='/watchlist' >Watch List</NavLink>
+                    <NavLink className='nav-link' to='/search' >Search</NavLink>
                 </Nav>
                 {user && <Button variant='outline-info' onClick={handleLogout} style={{maxWidth: '100px'}} className="me-2">Logout</Button>}
                 {!user && <Button variant='outline-info' onClick={goToLogin} style={{maxWidth: '100px'}} className="me-2">Login</Button>}

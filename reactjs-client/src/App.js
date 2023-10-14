@@ -13,6 +13,7 @@ import { Login } from "./components/login/Login";
 import { SuccessBanner } from "./components/successBanner/SuccessBanner";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Watchlist from "./components/watchlist/Watchlist";
+import Search from "./components/search/Search";
 
 function App() {
   const [movies, setMovies] = useState();
@@ -99,6 +100,12 @@ function App() {
                 ) : (
                   <Navigate to="/login" />
                 )
+              }
+            ></Route>
+            <Route
+              path='/search'
+              element={
+                  <Search setSuccessMessage={setSuccessMessage}/>
               }
             ></Route>
           </Route>
