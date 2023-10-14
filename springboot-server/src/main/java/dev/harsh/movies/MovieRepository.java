@@ -10,5 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MovieRepository extends MongoRepository<Movie, ObjectId> {
     Optional<Movie> findMovieByImdbId(String imdbId);
-    List<Movie> findByTitleContaining(String title);
+    List<Movie> findByTitleContainingIgnoreCase(String title);
+    List<Movie> findByTitleIgnoreCase(String title);
+
 }
