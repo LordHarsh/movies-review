@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./MovieCard.css";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-const MovieCard = ({ movie, removeItem, setSuccessMessage }) => {
+const MovieCard = ({ movie, removeItem, setSuccessMessage, deleteIconAbsent }) => {
   const { user } = useAuthContext();
   const navigate = useNavigate();
   const handleReview = () => {
@@ -45,7 +45,7 @@ const MovieCard = ({ movie, removeItem, setSuccessMessage }) => {
   };
   return (
     <Card className="m-auto" style={{ width: "18rem", borderColor: "gold" }}>
-      <Card.Img variant="top" src={movie.backdrops[0]} />
+      <Card.Img variant="top" src={movie.poster} />
       <Card.Body>
         <Card.Title style={{ color: "#ffc400", fontWeight: "bolder" }}>
           {movie.title}
@@ -76,7 +76,7 @@ const MovieCard = ({ movie, removeItem, setSuccessMessage }) => {
           >
             Review
           </Button>
-          <div className="delete-button-div" style={{}}>
+          {deleteIconAbsent ? null : <div className="delete-button-div" style={{}}>
             <Button
               className="m-2 delete-button"
               variant="danger"
@@ -85,7 +85,7 @@ const MovieCard = ({ movie, removeItem, setSuccessMessage }) => {
             >
               <FontAwesomeIcon icon={faTrash} />
             </Button>
-          </div>
+          </div>}
         </Stack>
       </Card.Body>
     </Card>
