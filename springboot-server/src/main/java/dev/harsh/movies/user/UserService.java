@@ -87,6 +87,7 @@ public class UserService {
             throw new RuntimeException("User not found");
         }
     }
+
     public DeleteWatchlistResponse removeFromWatchlist(String imdbId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {

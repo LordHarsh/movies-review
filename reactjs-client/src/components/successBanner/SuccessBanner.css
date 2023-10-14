@@ -1,0 +1,16 @@
+.success-banner {
+    background-color: #a9ffac;
+    border-color: #328134;
+    border-radius: 10px;
+    border-style: solid;
+    margin: 10px 30px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+
+.success-banner p {
+    margin: 0;
+    color: #328134;
+}
+  
