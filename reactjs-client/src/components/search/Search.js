@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../api/axiosConfig';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import MovieCard from '../movieCard/MovieCard';
 import './Search.css'; // Import your custom CSS for styling
 
@@ -47,7 +49,8 @@ const Search = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <Button variant="outline-warning" type='Submit'>
-            Search
+            <FontAwesomeIcon className='' icon={faMagnifyingGlass} />
+             <b>   Search</b>
           </Button>
         </Form.Group>
       </Form>
