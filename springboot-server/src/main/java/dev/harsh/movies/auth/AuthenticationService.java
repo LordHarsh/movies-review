@@ -35,6 +35,9 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
             .success(true)
             .message("User registered successfully")
+            .name(user.getName())
+            .email(user.getEmail())
+            .role(user.getRole().toString())
             .token(jwtToken)
             .build();
     }
@@ -51,6 +54,9 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
             .success(true)
             .message("User authenticated successfully")
+            .name(user.getName())
+            .email(user.getEmail())
+            .role(user.getRole().toString())
             .token(jwtToken)
             .build();
     }

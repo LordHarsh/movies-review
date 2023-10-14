@@ -1,5 +1,4 @@
 package dev.harsh.movies.auth;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +18,7 @@ public class AuthenticationController {
         @RequestBody RegisterRequest request
     ) {
         try {
+            System.out.println("Registering user");
             return ResponseEntity.ok(authenticationService.register(request));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(

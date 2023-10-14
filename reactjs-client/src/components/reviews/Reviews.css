@@ -1,0 +1,53 @@
+.poster {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid gold;
+  padding: 5px;
+  margin: 5px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  max-width: 100vh;
+}
+.poster-placeholder {
+    width: 100%;
+    border: 1px solid gold;
+    height: 100%;
+  }
+  /* Reviews.css */
+
+.add-to-watchlist-button span {
+  display: none; /* Initially, hide the text */
+  font-weight: bold;
+  transition: 0.2s;
+
+}
+.poster-container:hover .add-to-watchlist-button span {
+  display: inline; /* Display the text when the button is hovered */
+}
+.add-to-watchlist-button:hover {
+  transform: scale(1.1);
+  background-color: #ffc400;
+}
+
+.review-section {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.review {
+  margin-top: 10px;
+}
+
+.review hr {
+  margin-top: 10px;
+  border: 0.5px solid #ddd;
+}
+
+.review-form-textarea {
+  height: 100px;
+}
+
+.review-form-button {
+  margin-top: 10px;
+}
