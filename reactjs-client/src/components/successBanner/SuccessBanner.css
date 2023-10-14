@@ -11,6 +11,8 @@
 
 .success-banner p {
     margin: 0;
+    font-weight: bolder;
+    font-size: medium;
     color: #328134;
 }
   

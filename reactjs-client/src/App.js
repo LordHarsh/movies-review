@@ -19,7 +19,7 @@ function App() {
   const [movies, setMovies] = useState();
   const [movie, setMovie] = useState();
   const [reviews, setReviews] = useState([]);
-  const [successMessage, setSuccessMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState("");
   const { user } = useAuthContext();
 
   const getMovies = async () => {
@@ -48,7 +48,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" >
       <Header setSuccessMessage={setSuccessMessage}/>
       {successMessage && <SuccessBanner message={successMessage} />}
       <Routes>
