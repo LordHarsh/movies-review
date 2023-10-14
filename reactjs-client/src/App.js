@@ -13,12 +13,13 @@ import { Login } from "./components/login/Login";
 import { SuccessBanner } from "./components/successBanner/SuccessBanner";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Watchlist from "./components/watchlist/Watchlist";
+import Search from "./components/search/Search";
 
 function App() {
   const [movies, setMovies] = useState();
   const [movie, setMovie] = useState();
   const [reviews, setReviews] = useState([]);
-  const [successMessage, setSuccessMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState("");
   const { user } = useAuthContext();
 
   const getMovies = async () => {
@@ -47,7 +48,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" >
       <Header setSuccessMessage={setSuccessMessage}/>
       {successMessage && <SuccessBanner message={successMessage} />}
       <Routes>
@@ -99,6 +100,12 @@ function App() {
                 ) : (
                   <Navigate to="/login" />
                 )
+              }
+            ></Route>
+            <Route
+              path='/search'
+              element={
+                  <Search setSuccessMessage={setSuccessMessage}/>
               }
             ></Route>
           </Route>
