@@ -36,7 +36,6 @@ public class UserController {
 
     @PostMapping("/watchlist")
     public ResponseEntity<AddWatchlistResponse> addToWatchlist(@RequestBody Map<String, String> request) {
-        System.out.println("POST Request received");
         try {
             return ResponseEntity.ok(userService.addToWatchlist(request.get("imdbId")));
         } catch (Exception e) {
@@ -49,7 +48,6 @@ public class UserController {
 
     @DeleteMapping("/watchlist")
     public ResponseEntity<DeleteWatchlistResponse> removeFromWatchlist(@RequestBody Map<String, String> request) {
-        System.out.println("Request received");
         try {
             return ResponseEntity.ok(userService.removeFromWatchlist(request.get("imdbId")));
         } catch (Exception e) {
