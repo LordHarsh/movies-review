@@ -16,9 +16,9 @@ jobs:
           uses: actions/setup-java@v3
           with:
             distribution: 'temurin'
-            java-version: '17'
+            java-version: '20'
         - name: Move to server directory
-          run: cd springboot-server 
+          run: cd springboot-server && ls
         - name: Build Project
           run: mvn clean install -DskipTests
         - name: Login to docker hub
