@@ -11,22 +11,22 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
         - name: Checkout source
-            uses: actions/checkout@v3
+          uses: actions/checkout@v3
         - name: Setup Java
-            uses: actions/setup-java@v3
-            with:
+          uses: actions/setup-java@v3
+          with:
             distribution: 'temurin'
             java-version: '17'
         - name: Move to server directory
-            run: cd springboot-server 
+          run: cd springboot-server 
         - name: Build Project
-            run: mvn clean install -DskipTests
+          run: mvn clean install -DskipTests
         - name: Login to docker hub
-            run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+          run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
         - name: Build docker image
-            run docker build -t harshbanka/movies-spring-server .
+          run: docker build -t harshbanka/movies-spring-server .
         - name: Publish image to docker hub
-            run: docker push harshbanka/movies-spring-server:latest
+          run: docker push harshbanka/movies-spring-server:latest
 
   deploy:
     needs: build
@@ -37,4 +37,8 @@ jobs:
       - name: Delete old container
         run: docker rm -f movies-spring-server
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name movies-spring-server -e DATABASE_NAME=${{secrets.DATABASE_NAME}} -e JWT_SECRET=${{secrets.JWT_SECRET}} -e MONGO_URI=${{secrets.MONGO_URI}} harshbanka/movies-spring-server 
+        run: docker run -d -p 8080:8080 --name movies-spring-server\
+          -e DATABASE_NAME=${{secrets.DATABASE_NAME}}\
+          -e JWT_SECRET=${{secrets.JWT_SECRET}}\
+          -e MONGO_URI=${{secrets.MONGO_URI}}\
+          harshbanka/movies-spring-server 
