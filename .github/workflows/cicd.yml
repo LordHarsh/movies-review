@@ -18,9 +18,9 @@ jobs:
             distribution: 'temurin'
             java-version: '20'
         - name: Move to server directory
-          run: cd springboot-server && ls
+          run: cd springboot-server
         - name: Build Project
-          run: mvn clean install -DskipTests
+          run: ls && mvn clean install -DskipTests
         - name: Login to docker hub
           run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
         - name: Build docker image
