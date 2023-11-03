@@ -35,8 +35,8 @@ jobs:
       - name: Delete old container
         run: docker rm -f movies-spring-server
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name movies-spring-server\
-          -e DATABASE_NAME=${{secrets.DATABASE_NAME}}\
-          -e JWT_SECRET=${{secrets.JWT_SECRET}}\
-          -e MONGO_URI=${{secrets.MONGO_URI}}\
+        run: docker run -d -p 8080:8080 --name movies-spring-server
+          -e DATABASE_NAME=${{secrets.DATABASE_NAME}}
+          -e JWT_SECRET=${{secrets.JWT_SECRET}}
+          -e MONGO_URI=${{secrets.MONGO_URI}}
           harshbanka/movies-spring-server 
