@@ -22,7 +22,7 @@ jobs:
         - name: Login to docker hub
           run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
         - name: Build docker image
-          run: docker build -t harshbanka/movies-spring-server .
+          run: docker build -t harshbanka/movies-spring-server -f springboot-server/Dockerfile .
         - name: Publish image to docker hub
           run: docker push harshbanka/movies-spring-server:latest
 
