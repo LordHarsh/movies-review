@@ -11,7 +11,7 @@ export default (): Router => {
   app.use('/user', userRouter());
   app.use('/auth', authRouter());
   app.use('/movies', movieRouter());
-  app.use('/link', authenticateToken(), linkRouter());
-  app.use('/public', publicRouter());
+  // app.use('/link', authenticateToken(), linkRouter());
+  // app.use('/public', publicRouter());
   return app;
 };

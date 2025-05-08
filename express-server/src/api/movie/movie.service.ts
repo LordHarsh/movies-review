@@ -3,6 +3,7 @@ import database from '../../loaders/database';
 export const handleGetAllMovies = async (): Promise<unknown> => {
     const db = await database();
     const movies = await db.collection('movies').find().toArray();
+    console.log('movies', movies);
     return movies;
 };
 

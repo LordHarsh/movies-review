@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: movies-mongodb
+    hostname: movies-mongodb  # Added this line
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=movies-api
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./express-server
+      dockerfile: Dockerfile
+    container_name: express-backend
+    restart: always
+    ports:
+      - "7200:7200"
+    depends_on:
+      - mongodb
+    env_file:
+      - ./express-server/.env.docker
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./reactjs-client
+      dockerfile: Dockerfile
+    container_name: react-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo_data:

@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest  # Use official MongoDB image directly
+    container_name: movies-mongodb
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=movies-api
+    networks:
+      - app-network
+
+  backend:
+    image: moviesappregistry.azurecr.io/movies-backend:latest
+    build:
+      context: ./express-server
+      dockerfile: Dockerfile
+    container_name: express-backend
+    restart: always
+    depends_on:
+      - mongodb
+    env_file:
+      - ./express-server/.env.docker
+    networks:
+      - app-network
+
+  frontend:
+    image: moviesappregistry.azurecr.io/movies-frontend:latest
+    build:
+      context: ./reactjs-client
+      dockerfile: Dockerfile
+    container_name: react-frontend
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo_data:
