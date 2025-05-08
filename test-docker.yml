@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  backend:
+    image: harshbanka/express-backend:v1.0
+    ports:
+      - "7200:7200"
+    env_file:
+      - ./express-server/.env.docker
+    networks:
+      - app-network
+  
+  frontend:
+    image: harshbanka/react-frontend:v1.0
+    container_name: react-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
